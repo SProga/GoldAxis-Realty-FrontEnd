@@ -8,6 +8,17 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #efbf04;
+  --secondary: #251d01;
+  --primaryGradient: background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.67) 0%,
+    rgba(239, 191, 4, 0.12) 100%
+  );background: linear-gradient(
+  to right,
+  rgba(0, 0, 0, 0.67) 0%,
+  rgba(239, 191, 4, 0.12) 100%
+);
 }
 
 @theme inline {

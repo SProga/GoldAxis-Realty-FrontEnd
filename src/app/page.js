@@ -9,6 +9,7 @@ export default async function Home() {
   return (
     <div>
       <AppGlobalsInit globals={{ navigation, properties, homeData }} />
+      <>
     </div>
   );
 }

@@ -8,7 +8,11 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {},
+      colors: {
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        primaryGradient: "var(--primaryGradient)",
+      },
       fontFamily: {
         montserrat: ["var(--font-montserrat)"],
         inter: ["var(--font-inter)"],

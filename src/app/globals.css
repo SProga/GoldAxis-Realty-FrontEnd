@@ -10,15 +10,12 @@
   --foreground: #171717;
   --primary: #efbf04;
   --secondary: #251d01;
-  --primaryGradient: background: linear-gradient(
+  --primaryGradient: linear-gradient(
     to right,
     rgba(0, 0, 0, 0.67) 0%,
     rgba(239, 191, 4, 0.12) 100%
-  );background: linear-gradient(
-  to right,
-  rgba(0, 0, 0, 0.67) 0%,
-  rgba(239, 191, 4, 0.12) 100%
-);
+  );
+  --backgroundLight: rgba(250, 250, 250, 0.4);
 }
 
 @theme inline {
@@ -38,5 +35,6 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }

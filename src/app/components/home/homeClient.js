@@ -19,7 +19,7 @@ export default function HomeClient({ navigation, homeData }) {
       <div className="max-w-1/2 mx-auto">
         <PropertySearchPanelClient />
       </div>
-      <Container className="pt-8 mt-50" size="sm">
+      <Container className="pt-8 my-50" size="sm">
         <FeaturedSection pageData={homeData} />
       </Container>
     </>

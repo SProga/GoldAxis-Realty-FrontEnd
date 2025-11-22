@@ -3,6 +3,7 @@ import { useAppStore } from "@/app/lib/stores/useAppStore";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import ImageRenderer from "../../UI/ImageRenderer/ImageRenderer";
 import classes from "./featuredSection.module.css";
+import Button from "../../UI/button/button";
 
 export default function FeaturedSection({ pageData = {} }) {
   const { featured_section } = pageData;
@@ -50,9 +51,9 @@ export default function FeaturedSection({ pageData = {} }) {
               className="object-cover"
             />
           </div>
-          <button className="mt-auto w-max bg-secondary cursor-pointer text-primary px-6 py-2 rounded-full hover:bg-primary hover:text-secondary transition">
+          <Button className="px-6 py-2 hover:bg-primary hover:text-secondary transition">
             Explore Properties →
-          </button>
+          </Button>
         </div>
 
         {/* Right images grid */}

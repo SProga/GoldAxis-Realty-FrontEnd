@@ -63,7 +63,7 @@ export default function PropertySearchPanel() {
               />
             </div>
           </div>
-          <Button />
+          <Button>Search</Button>
         </div>
         <div className="flex items-center mt-8">
           <div className="mr-3">Filters: </div>

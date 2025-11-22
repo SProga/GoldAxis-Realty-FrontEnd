@@ -20,6 +20,9 @@ module.exports = {
         montserrat: ["var(--font-montserrat)"],
         inter: ["var(--font-inter)"],
       },
+      boxShadow: {
+        default: "var(--defaultShadow)",
+      },
       screen: {
         "2xl": "1536px",
       },

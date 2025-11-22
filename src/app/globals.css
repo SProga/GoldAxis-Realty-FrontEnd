@@ -16,6 +16,7 @@
     rgba(239, 191, 4, 0.12) 100%
   );
   --backgroundLight: rgba(250, 250, 250, 0.4);
+  --defaultShadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 @theme inline {
@@ -37,4 +38,8 @@ body {
   color: var(--foreground);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.default_shadow {
+  box-shadow: var(--defaultShadow);
 }

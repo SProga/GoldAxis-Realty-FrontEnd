@@ -19,7 +19,7 @@ export async function requestHandler(callback) {
       return { data: null, error: res.error };
     }
 
-    return { data: res.data ?? res, error: null };
+    return { data: res.data, error: null };
   } catch (err) {
     console.error("❌ Network/Unexpected Error:", err);
 

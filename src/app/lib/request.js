@@ -28,8 +28,7 @@ export default async function request(route, query = {}) {
         Authorization: `Bearer ${process.env.API_KEY}`,
         "Content-Type": "application/json",
       },
-      // ❗ don't spread a boolean; spread an object or {}
-      ...(isProduction ? { next: { revalidate: 60 } } : {}),
+      ...(isProduction ? { next: { revalidate: 60 } } : { revalidate: 10 }),
     };
 
     const res = await fetch(url.href, fetchOptions);

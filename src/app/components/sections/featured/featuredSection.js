@@ -8,10 +8,7 @@ import Button from "../../UI/button/button";
 export default function FeaturedSection({ pageData = {} }) {
   const { featured_section } = pageData;
   const featuredProperties = useAppStore((state) => state.featuredProperties);
-  let fakeData = [...featuredProperties];
-  for (let i = 0; i < 5; i++) {
-    fakeData[i] = featuredProperties[0];
-  }
+  console.log("featuredProperties", featuredProperties);
 
   return (
     <>
@@ -57,7 +54,7 @@ export default function FeaturedSection({ pageData = {} }) {
         </div>
 
         {/* Right images grid */}
-        {fakeData.slice(1, 5).map((property, idx) => (
+        {featuredProperties.slice(1, 5).map((property, idx) => (
           <div
             key={idx}
             className="col-span-1 gap-x-4 gap-y-2 relative w-full rounded-lg overflow-hidden"

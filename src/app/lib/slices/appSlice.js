@@ -4,8 +4,8 @@ export const createAppSlice = (set, get) => ({
   properties: [],
   homeData: [],
   setInitialized: () => set({ initialized: true }),
-  setGlobals: ({ navigation, properties, homeData }) => {
-    set({ navigation, properties, homeData });
+  setGlobals: ({ navigation, properties, homeData, parishData }) => {
+    set({ navigation, properties, homeData, parishData });
     get().setInitialized();
     const setFeaturedProperties = get().setFeaturedProperties;
     setFeaturedProperties(properties.data);

@@ -1,7 +1,7 @@
 import Button from "../../UI/button/button";
 import Container from "../../UI/container/container";
 
-export default function PropertySearchPanel() {
+export default function PropertySearchPanel({ parishData = {} }) {
   return (
     <Container>
       <form className="p-8 bg-white shadow-default rounded-2xl" action="#">
@@ -11,59 +11,97 @@ export default function PropertySearchPanel() {
           place
         </div>
         <div className="flex">
-          <div className="grid gap-4 sm:grid-cols-4 sm:gap-6">
-            <div className="w-full">
-              <label
-                htmlFor="brand"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Location
-              </label>
-              <input
-                type="text"
-                name="brand"
-                id="brand"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="Product brand"
-                required
-              />
-            </div>
+          <div className="flex flex-wrap">
+            <div className="grid gap-4 sm:grid-cols-5 sm:gap-6 w-full">
+              <div className="w-full">
+                <label
+                  htmlFor="brand"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Location
+                </label>
+                <select
+                  name="brand"
+                  id="brand"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  required
+                />
+              </div>
+              <div className="w-full">
+                <label
+                  htmlFor="brand"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Property Type
+                </label>
+                <select
+                  name="brand"
+                  id="brand"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder="Product brand"
+                  required
+                />
+              </div>
 
-            <div className="w-full">
-              <label
-                htmlFor="price"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Price
-              </label>
-              <input
-                type="number"
-                name="price"
-                id="price"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="$2999"
-                required
-              />
-            </div>
+              <div className="w-full">
+                <label
+                  htmlFor="price"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Price
+                </label>
+                <input
+                  type="number"
+                  name="price"
+                  id="price"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder="$2999"
+                  required
+                />
+              </div>
 
-            <div>
-              <label
-                htmlFor="category"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Number of rooms
-              </label>
-              <input
-                type="number"
-                name="rooms"
-                id="rooms"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="0"
-                required
-              />
+              <div>
+                <label
+                  htmlFor="category"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Number of rooms
+                </label>
+                <input
+                  type="number"
+                  name="rooms"
+                  id="rooms"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder="0"
+                  required
+                />
+              </div>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-5 sm:gap-6 mt-2 w-full">
+              <div className="w-full">
+                <label
+                  htmlFor="parish"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Parish
+                </label>
+                <select
+                  name="parish"
+                  id="parish"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                >
+                  {parishData.map((el, idx) => {
+                    return (
+                      <option key={idx} value={el.value}>
+                        {el.name}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
             </div>
           </div>
-          <Button>Search</Button>
+          <Button className="self-center">Search</Button>
         </div>
         <div className="flex items-center mt-8">
           <div className="mr-3">Filters: </div>

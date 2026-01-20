@@ -1,16 +1,15 @@
 // app/components/PropertyCard.jsx
-import Image from "next/image";
 import Link from "next/link";
 import { BedDouble, Bath, MapPin } from "lucide-react";
+import ImageRenderer from "../ImageRenderer/ImageRenderer";
 
 export default function Property({
-  href = "/properties/1",
-  imageSrc = "/property.jpg", // put the file in /public or pass a remote URL
-  imageAlt = "Property photo",
+  href = "/property_1",
+  images = [],
   bedrooms = 5,
   bathrooms = 3,
-  area = "Edgehill",
-  parish = "St.Thomas",
+  full_address = "N/A",
+  parish = {},
   price = 430000,
   currency = "BBD",
   badge = "Featured",
@@ -28,9 +27,9 @@ export default function Property({
     >
       {/* Image */}
       <div className="relative aspect-[4/3] w-full overflow-hidden">
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
+        <ImageRenderer
+          src={images[0].url}
+          alt={images[0].alternativeText || "None available"}
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
           sizes="(max-width: 768px) 100vw, 360px"
@@ -63,7 +62,7 @@ export default function Property({
 
           <div className="flex items-center gap-2">
             <Bath className="h-4 w-4 text-zinc-500" />
-            <span className="font-medium text-zinc-900">{bathrooms}</span>
+            <span className="font-medium text-zinc-900">{bathrooms ?? 0}</span>
             <span className="text-zinc-500">Bathrooms</span>
           </div>
         </div>
@@ -72,8 +71,8 @@ export default function Property({
         <div className="mt-3 flex items-center gap-2 text-sm">
           <MapPin className="h-4 w-4 text-zinc-500" />
           <span className="font-semibold text-zinc-900">
-            {area}
-            {parish ? `, ${parish}` : ""}
+            {full_address}
+            {parish ? `, ${parish.name}` : ""}
           </span>
         </div>
 

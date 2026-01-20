@@ -10,7 +10,12 @@ import Properties from "../sections/properties/properties";
 import About from "../sections/about/about";
 import Testimonials from "../sections/testimonials/testimonials";
 
-export default function HomeClient({ navigation, homeData }) {
+export default function HomeClient({
+  navigation,
+  homeData,
+  parishData,
+  allProperties,
+}) {
   const initialized = useAppStore((state) => state.initialized);
 
   if (!initialized) {
@@ -21,14 +26,14 @@ export default function HomeClient({ navigation, homeData }) {
     <>
       <Header navigation={navigation} data={homeData} />
       <div className="max-w-1/2 mx-auto">
-        <PropertySearchPanelClient />
+        <PropertySearchPanelClient parishData={parishData} />
       </div>
       <Container className="pt-8 my-50" size="sm">
         <FeaturedSection pageData={homeData} />
       </Container>
       <DiscoveredSection />
       <Container className="pt-8 mt-20">
-        <Properties />
+        <Properties allProperties={allProperties} />
       </Container>
       <div className="mt-20">
         <About />

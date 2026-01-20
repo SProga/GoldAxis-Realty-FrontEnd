@@ -90,7 +90,7 @@ const properties = [
   // add more...
 ];
 
-export default function Properties() {
+export default function Properties({ allProperties = [] }) {
   return (
     <div>
       <div className="grid grid-cols-2">
@@ -107,7 +107,7 @@ export default function Properties() {
         </div>
       </div>
       <div className="mt-10">
-        <PropertyList properties={properties} />
+        <PropertyList allProperties={allProperties} />
       </div>
     </div>
   );

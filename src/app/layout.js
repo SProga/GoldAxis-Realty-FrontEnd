@@ -1,10 +1,17 @@
-import { Inter } from "next/font/google";
+import { Cinzel, Josefin_Sans } from "next/font/google";
 import "./globals.css";
+import Footer from "./components/sections/Footer/Footer";
 
-const inter = Inter({
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
   subsets: ["latin"],
-  variable: "--font-inter", // optional CSS variable
-  display: "swap",
+  weight: ["500", "600", "700"],
+});
+
+const josefinSans = Josefin_Sans({
+  variable: "--font-josefin",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -15,7 +22,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body
+        className={`${cinzel.variable} ${josefinSans.variable} antialiased`}
+      >
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

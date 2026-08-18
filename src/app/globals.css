@@ -3,43 +3,54 @@
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
+
 @config "../../tailwind.config.js";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary: #efbf04;
-  --secondary: #251d01;
-  --primaryGradient: linear-gradient(
+  --background: #090a0a;
+  --surface: #111212;
+
+  --primary: #d9ae2b;
+  --primary-light: #f1cc58;
+
+  --foreground: #f4f0e7;
+  --muted: #b8b5ae;
+
+  --primary-gradient: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.67) 0%,
-    rgba(239, 191, 4, 0.12) 100%
+    rgba(9, 10, 10, 0.9) 0%,
+    rgba(217, 174, 43, 0.12) 100%
   );
-  --backgroundLight: rgba(250, 250, 250, 0.4);
-  --defaultShadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  --default-shadow: rgba(0, 0, 0, 0.25) 0 8px 24px;
+  --primary-shadow: 0 8px 40px rgba(212, 175, 55, 0.15);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+
+  --font-sans: var(--font-josefin);
+  --font-display: var(--font-cinzel);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-josefin), sans-serif;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-.default_shadow {
-  box-shadow: var(--defaultShadow);
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-cinzel), serif;
+  }
 }

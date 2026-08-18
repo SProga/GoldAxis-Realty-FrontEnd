@@ -1,6 +1,6 @@
 import { getAppGlobalServer } from "@/app/lib/init/appGlobalsInit.server";
 import AppGlobalsInit from "@/app/lib/init/appGlobalsInit.client";
-import HomeClient from "./components/home/homeClient";
+import HomeClient from "./components/Home/HomeClient";
 
 export default async function Home() {
   const { navigation, properties, homeData, parishData } =

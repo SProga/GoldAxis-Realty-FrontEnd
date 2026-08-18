@@ -1,4 +1,3 @@
-// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -9,21 +8,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        background: "var(--background)",
+        surface: "var(--surface)",
         primary: "var(--primary)",
-        secondary: "var(--secondary)",
-        backgroundLight: "var(--backgroundLight)",
+        "primary-light": "var(--primary-light)",
+        foreground: "var(--foreground)",
+        muted: "var(--muted)",
       },
       backgroundImage: {
-        primaryGradient: "var(--primaryGradient)",
+        primaryGradient: "var(--primary-gradient)",
       },
       fontFamily: {
-        montserrat: ["var(--font-montserrat)"],
-        inter: ["var(--font-inter)"],
+        sans: ["var(--font-josefin)", "sans-serif"],
+        display: ["var(--font-cinzel)", "serif"],
       },
       boxShadow: {
-        default: "var(--defaultShadow)",
+        default: "var(--default-shadow)",
+        primary: "var(--primary-shadow)",
       },
-      screen: {
+      screens: {
         "2xl": "1536px",
       },
     },

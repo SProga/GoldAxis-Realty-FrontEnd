@@ -1,6 +1,6 @@
 import { Cinzel, Josefin_Sans } from "next/font/google";
 import "./globals.css";
-import Footer from "./components/sections/Footer/Footer";
+import Footer from "./components/Sections/Footer/Footer";
 
 const cinzel = Cinzel({
   variable: "--font-cinzel",

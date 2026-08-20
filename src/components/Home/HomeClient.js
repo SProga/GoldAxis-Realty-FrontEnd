@@ -1,5 +1,5 @@
 "use client";
-import { useAppStore } from "@/app/lib/stores/useAppStore";
+import { useAppStore } from "@/lib/stores/useAppStore";
 import Header from "../Header/Header";
 import LoadingScreen from "../UI/loadingScreen/loadingScreen";
 import ServicesSection from "../Sections/ServicesPreview/ServicesPreviewSection";

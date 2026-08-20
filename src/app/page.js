@@ -1,21 +1,12 @@
-import { getAppGlobalServer } from "@/app/lib/init/appGlobalsInit.server";
-import AppGlobalsInit from "@/app/lib/init/appGlobalsInit.client";
-import HomeClient from "./components/Home/HomeClient";
+import { getAppGlobalServer } from "@/lib/init/appGlobalsInit.server";
+import HomeClient from "../components/Home/HomeClient";
 
 export default async function Home() {
-  const { navigation, properties, homeData, parishData } =
-    await getAppGlobalServer();
-  console.log("navigation", navigation);
-  console.log("homeData", homeData);
-  console.log("properties", properties);
+  const { properties, homeData, parishData } = await getAppGlobalServer();
 
   return (
     <div>
-      <AppGlobalsInit
-        globals={{ navigation, properties, homeData, parishData }}
-      />
       <HomeClient
-        navigation={navigation.data}
         homeData={homeData.data}
         parishData={parishData}
         allProperties={properties}

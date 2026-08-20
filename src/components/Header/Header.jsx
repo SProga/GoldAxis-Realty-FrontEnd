@@ -1,7 +1,6 @@
-import Navigation from "../Navigation/Navigation";
 import ImageRenderer from "../UI/ImageRenderer/ImageRenderer";
 
-export default function Header({ navigation, data }) {
+export default function Header({ data }) {
   return (
     <header className="relative h-screen min-h-[700px] max-h-[900px] overflow-hidden bg-background">
       <ImageRenderer
@@ -14,8 +13,6 @@ export default function Header({ navigation, data }) {
 
       <div className="absolute inset-0 bg-black/50" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/65" />
-
-      <Navigation navigation={navigation} />
 
       <div className="relative z-10 flex h-full items-center justify-center px-6 pt-[86px]">
         <div className="mx-auto max-w-[950px] text-center">

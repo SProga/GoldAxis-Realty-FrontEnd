@@ -4,7 +4,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useAppStore } from "@/app/lib/stores/useAppStore";
+import { useAppStore } from "@/lib/stores/useAppStore";
 
 export default function AppGlobalsInit({ globals }) {
   const setGlobals = useAppStore((state) => state.setGlobals);

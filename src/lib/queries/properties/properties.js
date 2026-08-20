@@ -1,4 +1,4 @@
-import { client } from "@/app/lib/strapiClient";
+import { client } from "@/lib/strapiClient";
 import { requestHandler } from "../../requestHandler";
 
 export async function getAllProperties() {

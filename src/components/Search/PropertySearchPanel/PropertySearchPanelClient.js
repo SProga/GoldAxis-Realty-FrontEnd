@@ -1,7 +1,7 @@
 "use client";
 import PropertySearchPanel from "./PropertySearchPanel";
 import { motion } from "framer-motion";
-import { useAppStore } from "@/app/lib/stores/useAppStore";
+import { useAppStore } from "@/lib/stores/useAppStore";
 
 export default function PropertySearchPanelClient() {
   const parishData = useAppStore((s) => s.parishData);

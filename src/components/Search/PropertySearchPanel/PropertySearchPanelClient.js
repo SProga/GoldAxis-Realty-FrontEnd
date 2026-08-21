@@ -13,7 +13,7 @@ export default function PropertySearchPanelClient() {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="m-[-100px]"
     >
-      <PropertySearchPanel parishData={parishData.data} />
+      <PropertySearchPanel parishData={parishData} />
     </motion.div>
   );
 }

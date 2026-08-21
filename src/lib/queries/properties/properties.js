@@ -9,3 +9,20 @@ export async function getAllProperties() {
     });
   });
 }
+
+export async function getPropertyBySlug(slug) {
+  return requestHandler(
+    async () => {
+      const propertiesAPI = client.collection("properties");
+      return propertiesAPI.find({
+        filters: {
+          slug: {
+            $eq: slug,
+          },
+        },
+        populate: "*",
+      });
+    },
+    { single: true },
+  );
+}

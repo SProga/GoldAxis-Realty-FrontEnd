@@ -1,11 +1,12 @@
 "use client";
 import { useAppStore } from "@/lib/stores/useAppStore";
 import Header from "../Header/Header";
-import LoadingScreen from "../UI/loadingScreen/loadingScreen";
+
 import ServicesSection from "../Sections/ServicesPreview/ServicesPreviewSection";
 import PropertiesPreviewSection from "../Sections/PropertiesPreview/PropertiesPreview";
 import AboutPreviewSection from "../Sections/AboutPreview/AboutPreview";
 import ContactPreviewSection from "../Sections/ContactPreview/ContactPreview";
+import LoadingScreen from "../UI/LoadingScreen/LoadingScreen";
 
 export default function HomeClient({
   navigation,

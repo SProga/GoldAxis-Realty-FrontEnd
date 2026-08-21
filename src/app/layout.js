@@ -26,7 +26,12 @@ export default async function RootLayout({ children }) {
   const { navigation, properties, homeData, parishData } =
     await getAppGlobalServer();
 
-  console.log("navigation", navigation);
+  console.log("data", {
+    navigation,
+    properties,
+    homeData,
+    parishData,
+  });
 
   return (
     <html lang="en">
@@ -36,7 +41,7 @@ export default async function RootLayout({ children }) {
         <AppGlobalsInit
           globals={{ navigation, properties, homeData, parishData }}
         />
-        <Navigation navigation={navigation.data} />
+        <Navigation navigation={navigation} />
         {children}
         <Footer />
       </body>

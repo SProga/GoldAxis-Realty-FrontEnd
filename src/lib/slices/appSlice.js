@@ -8,6 +8,6 @@ export const createAppSlice = (set, get) => ({
     set({ navigation, properties, homeData, parishData });
     get().setInitialized();
     const setFeaturedProperties = get().setFeaturedProperties;
-    setFeaturedProperties(properties.data);
+    setFeaturedProperties(properties);
   },
 });

@@ -1,4 +1,4 @@
-import Button from "../../UI/button/button";
+import Button from "../../UI/Button/Button";
 import Container from "../../UI/container/container";
 
 export default function PropertySearchPanel({ parishData = {} }) {

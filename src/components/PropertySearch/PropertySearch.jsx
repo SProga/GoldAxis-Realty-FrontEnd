@@ -19,7 +19,7 @@ const default_filters = {
 };
 
 export default function PropertiesSearch({ allProperties = [] }) {
-  const properties = allProperties?.data || [];
+  const properties = allProperties || [];
   const [filters, setFilters] = useState(default_filters);
   const [sort_by, setSortBy] = useState("newest");
   const [show_filters, setShowFilters] = useState(false);
@@ -144,7 +144,7 @@ export default function PropertiesSearch({ allProperties = [] }) {
 
           <div className="mt-8">
             {filtered_properties.length ? (
-              <PropertyList allProperties={{ data: filtered_properties }} />
+              <PropertyList allProperties={filtered_properties} />
             ) : (
               <div className="flex min-h-[400px] items-center justify-center rounded-[8px] border border-foreground/10 bg-surface">
                 <div className="text-center">

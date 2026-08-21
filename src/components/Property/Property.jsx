@@ -3,9 +3,9 @@ import { Bath, BedDouble, MapPin, Maximize2 } from "lucide-react";
 import ImageRenderer from "../UI/ImageRenderer/ImageRenderer";
 
 export default function Property({
-  href = "/property_1",
+  slug = "",
   images = [],
-  name = "Luxury Property",
+  title = "N/A",
   bedrooms = 5,
   bathrooms = 3,
   square_feet = null,
@@ -25,14 +25,14 @@ export default function Property({
 
   return (
     <Link
-      href={href}
+      href={`/properties/${slug}`}
       className="group block w-full overflow-hidden rounded-[9px] border border-foreground/10 bg-background transition-[border-color,box-shadow] duration-300 ease-out hover:border-primary/30 hover:shadow-primary"
     >
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface">
         {image && (
           <ImageRenderer
             src={image.url}
-            alt={image.alternativeText || name}
+            alt={image.alternativeText || title}
             fill
             className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
             sizes="(max-width: 768px) 100vw, 400px"
@@ -55,7 +55,7 @@ export default function Property({
 
       <div className="px-5 py-5">
         <h3 className="font-display text-[16px] uppercase leading-6 text-primary">
-          {name}
+          {title}
         </h3>
 
         <div className="mt-4 flex items-center gap-2 font-sans text-[12px] text-muted">

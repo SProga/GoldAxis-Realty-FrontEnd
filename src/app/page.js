@@ -7,7 +7,7 @@ export default async function Home() {
   return (
     <div>
       <HomeClient
-        homeData={homeData.data}
+        homeData={homeData}
         parishData={parishData}
         allProperties={properties}
       />

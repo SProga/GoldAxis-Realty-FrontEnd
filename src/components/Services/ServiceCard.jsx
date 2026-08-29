@@ -1,5 +1,8 @@
+import { getIcon } from "../UI/Helpers/getIcon";
+
 export default function ServiceCard({ service }) {
-  const Icon = service.icon;
+  console.log(typeof service.icon);
+  const Icon = getIcon(service.icon);
 
   return (
     <article className="group flex min-h-[230px] flex-col items-center justify-center rounded-[5px] border border-foreground/[0.07] bg-surface px-7 py-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/40">

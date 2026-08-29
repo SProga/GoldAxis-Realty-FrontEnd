@@ -15,8 +15,6 @@ export async function getAppGlobalServer() {
         getParishData(),
       ]);
 
-      console.log("ParishData", parishData);
-
       cachedInit = {
         navigation,
         properties,

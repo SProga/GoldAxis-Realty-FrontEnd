@@ -14,7 +14,6 @@ export default function Navigation({ navigation }) {
           <span className="font-display text-[22px] font-semibold tracking-[0.03em] text-primary">
             Prestige
           </span>
-
           <span className="font-display text-[18px] font-normal tracking-[0.05em] text-foreground/75">
             Estates
           </span>

@@ -23,7 +23,7 @@ export default function HomeClient({
   return (
     <>
       <Header navigation={navigation} data={homeData} />
-      <ServicesSection />
+      <ServicesSection service_preview={homeData.section_preview} />
       <PropertiesPreviewSection allProperties={allProperties} />
       <AboutPreviewSection />
       <ContactPreviewSection />

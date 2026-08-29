@@ -26,13 +26,6 @@ export default async function RootLayout({ children }) {
   const { navigation, properties, homeData, parishData } =
     await getAppGlobalServer();
 
-  console.log("data", {
-    navigation,
-    properties,
-    homeData,
-    parishData,
-  });
-
   return (
     <html lang="en">
       <body

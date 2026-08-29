@@ -1,132 +1,87 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import PropertyFilters from "./PropertyFilters";
 import PropertiesToolbar from "./PropertyToolbar";
 import PropertyList from "../Property/PropertyList";
+import { Button } from "../UI/Button/Button";
 
 const default_filters = {
-  search: "",
+  property_status: [],
+  property_location_types: [],
   parish: [],
-  status: [],
-  type: [],
-  min_price: "",
-  max_price: "",
   bedrooms: "",
   bathrooms: "",
+  min_price: "",
+  max_price: "",
   min_square_feet: "",
   max_square_feet: "",
 };
 
-export default function PropertiesSearch({ allProperties = [] }) {
+const normalize_array_filter = (value) => {
+  if (Array.isArray(value)) return value;
+  if (value) return [value];
+  return [];
+};
+
+export default function PropertiesSearch({
+  allProperties = [],
+  parishes = [],
+  propertyLocationTypes = [],
+  initialFilters = {},
+}) {
+  const router = useRouter();
   const properties = allProperties || [];
-  const [filters, setFilters] = useState(default_filters);
+
+  const [filters, setFilters] = useState({
+    ...default_filters,
+    ...initialFilters,
+    property_status: normalize_array_filter(initialFilters.property_status),
+    property_location_types: normalize_array_filter(
+      initialFilters.property_location_types,
+    ),
+    parish: normalize_array_filter(initialFilters.parish),
+  });
+
   const [sort_by, setSortBy] = useState("newest");
   const [show_filters, setShowFilters] = useState(false);
 
-  const filtered_properties = useMemo(() => {
-    let result = [...properties];
-
-    if (filters.search.trim()) {
-      const search = filters.search.toLowerCase();
-
-      result = result.filter((property) => {
-        const searchable = [
-          property.name,
-          property.full_address,
-          property.parish?.name,
-          property.type?.name,
-          property.status,
-        ]
-          .filter(Boolean)
-          .join(" ")
-          .toLowerCase();
-
-        return searchable.includes(search);
-      });
-    }
-
-    if (filters.parish.length) {
-      result = result.filter((property) =>
-        filters.parish.includes(property.parish?.name),
-      );
-    }
-
-    if (filters.status.length) {
-      result = result.filter((property) =>
-        filters.status.includes(property.status),
-      );
-    }
-
-    if (filters.type.length) {
-      result = result.filter((property) =>
-        filters.type.includes(property.type?.name),
-      );
-    }
-
-    if (filters.min_price !== "") {
-      result = result.filter(
-        (property) => Number(property.price) >= Number(filters.min_price),
-      );
-    }
-
-    if (filters.max_price !== "") {
-      result = result.filter(
-        (property) => Number(property.price) <= Number(filters.max_price),
-      );
-    }
-
-    if (filters.bedrooms !== "") {
-      result = result.filter(
-        (property) => Number(property.bedrooms) >= Number(filters.bedrooms),
-      );
-    }
-
-    if (filters.bathrooms !== "") {
-      result = result.filter(
-        (property) => Number(property.bathrooms) >= Number(filters.bathrooms),
-      );
-    }
-
-    if (filters.min_square_feet !== "") {
-      result = result.filter(
-        (property) =>
-          Number(property.square_feet) >= Number(filters.min_square_feet),
-      );
-    }
-
-    if (filters.max_square_feet !== "") {
-      result = result.filter(
-        (property) =>
-          Number(property.square_feet) <= Number(filters.max_square_feet),
-      );
-    }
+  const sorted_properties = useMemo(() => {
+    const result = [...properties];
 
     if (sort_by === "price_low")
       result.sort((a, b) => Number(a.price) - Number(b.price));
+
     if (sort_by === "price_high")
       result.sort((a, b) => Number(b.price) - Number(a.price));
+
     if (sort_by === "newest")
       result.sort(
         (a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0),
       );
 
     return result;
-  }, [properties, filters, sort_by]);
+  }, [properties, sort_by]);
 
   const update_filter = (name, value) => {
-    setFilters((current) => ({ ...current, [name]: value }));
+    setFilters((current) => ({
+      ...current,
+      [name]: value,
+    }));
   };
 
   const reset_filters = () => {
     setFilters(default_filters);
+    router.push("/properties");
   };
 
   return (
     <main className="min-h-screen bg-background pt-[86px]">
       <div className="mx-auto flex max-w-[1600px]">
         <PropertyFilters
-          properties={properties}
+          parishes={parishes}
+          propertyLocationTypes={propertyLocationTypes}
           filters={filters}
           show_filters={show_filters}
           on_change={update_filter}
@@ -136,15 +91,15 @@ export default function PropertiesSearch({ allProperties = [] }) {
 
         <div className="min-w-0 flex-1 px-5 py-8 md:px-8 lg:px-10">
           <PropertiesToolbar
-            count={filtered_properties.length}
+            count={sorted_properties.length}
             sort_by={sort_by}
             on_sort={setSortBy}
             on_filters={() => setShowFilters(true)}
           />
 
           <div className="mt-8">
-            {filtered_properties.length ? (
-              <PropertyList allProperties={filtered_properties} />
+            {sorted_properties.length ? (
+              <PropertyList allProperties={sorted_properties} />
             ) : (
               <div className="flex min-h-[400px] items-center justify-center rounded-[8px] border border-foreground/10 bg-surface">
                 <div className="text-center">
@@ -156,13 +111,13 @@ export default function PropertiesSearch({ allProperties = [] }) {
                     Try changing or clearing some of your search filters.
                   </p>
 
-                  <button
-                    type="button"
+                  <Button
+                    type="secondary"
                     onClick={reset_filters}
-                    className="mt-5 rounded-[4px] border border-primary/40 px-5 py-3 font-sans text-[10px] font-semibold uppercase tracking-[0.12em] text-primary transition-all duration-300 hover:bg-primary hover:text-background"
+                    className="mt-5 cursor-pointer"
                   >
                     Clear Filters
-                  </button>
+                  </Button>
                 </div>
               </div>
             )}

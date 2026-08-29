@@ -1,9 +1,22 @@
 import PropertiesSearch from "@/components/PropertySearch/PropertySearch";
-import { getAllProperties } from "@/lib/queries/properties/properties";
+import { getParishData } from "@/lib/queries/parish/parish";
+import { getPropertiesSearch } from "@/lib/queries/properties/properties";
+import { getPropertyLocationType } from "@/lib/queries/properties/propertyType/propertyLocationType";
 
-export default async function PropertiesPage() {
-  const allProperties = await getAllProperties();
-  console.log(allProperties);
+export default async function PropertiesPage({ searchParams }) {
+  const filters = await searchParams;
 
-  return <PropertiesSearch allProperties={allProperties} />;
+  const [properties, parishes, propertyLocationTypes] = await Promise.all([
+    getPropertiesSearch(filters),
+    getParishData(),
+    getPropertyLocationType(),
+  ]);
+
+  return (
+    <PropertiesSearch
+      allProperties={properties}
+      parishes={parishes}
+      propertyLocationTypes={propertyLocationTypes}
+    />
+  );
 }

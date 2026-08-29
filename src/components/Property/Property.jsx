@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Bath, BedDouble, MapPin, Maximize2 } from "lucide-react";
+import { Bath, BedDouble, MapPin } from "lucide-react";
 import ImageRenderer from "../UI/ImageRenderer/ImageRenderer";
+import { floorAreaDisplay } from "../UI/Helpers/floorAreaDisplay";
 
 export default function Property({
   slug = "",
@@ -8,9 +9,10 @@ export default function Property({
   title = "N/A",
   bedrooms = 5,
   bathrooms = 3,
-  square_feet = null,
   full_address = "N/A",
   parish = {},
+  floor_area = 0,
+  floor_area_unit = "",
   price = 430000,
   currency = "BBD",
   status = "For Sale",
@@ -22,6 +24,9 @@ export default function Property({
   }).format(price);
 
   const image = images?.[0];
+
+  floor_area = floorAreaDisplay(floor_area, floor_area_unit);
+  const FloorAreaIcon = floor_area?.Icon;
 
   return (
     <Link
@@ -78,10 +83,10 @@ export default function Property({
             <span>{bathrooms ?? 0} Baths</span>
           </div>
 
-          {square_feet && (
+          {floor_area && (
             <div className="flex items-center gap-2">
-              <Maximize2 className="h-4 w-4" strokeWidth={1.4} />
-              <span>{Number(square_feet).toLocaleString()} sqft</span>
+              <FloorAreaIcon className="h-4 w-4" strokeWidth={1.4} />
+              <span>{`${floor_area.value} ${floor_area.label}`}</span>
             </div>
           )}
         </div>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Phone } from "lucide-react";
+import ImageRenderer from "../UI/ImageRenderer/ImageRenderer";
 
 export default function Navigation({ navigation }) {
   const pathname = usePathname();
@@ -10,17 +11,17 @@ export default function Navigation({ navigation }) {
   return (
     <nav className="absolute left-0 top-0 z-50 w-full border-b border-foreground/5 bg-background">
       <div className="mx-auto flex h-[86px] max-w-[1450px] items-center justify-between px-6 lg:px-10">
-        <Link href="/" className="flex shrink-0 items-baseline gap-2">
-          <span className="font-display text-[22px] font-semibold tracking-[0.03em] text-primary">
-            Prestige
-          </span>
-          <span className="font-display text-[18px] font-normal tracking-[0.05em] text-foreground/75">
-            Estates
-          </span>
+        <Link href="/" className="relative block h-[64px] w-[64px] shrink-0">
+          <ImageRenderer
+            src="http://localhost:1337/uploads/Gold_Axis_Logo_70f7db300c.png"
+            alt="Gold Axis"
+            fill
+            className="object-contain object-center"
+          />
         </Link>
 
         <div className="hidden items-center gap-8 lg:flex">
-          {navigation.navigation_link.map((nav) => {
+          {navigation?.navigation_link?.map((nav) => {
             const href = nav.link === "home" ? "/" : nav.link;
             const isActive = pathname === href;
 

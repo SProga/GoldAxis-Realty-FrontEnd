@@ -8,13 +8,8 @@ export default function ImageRenderer({
   width,
   height,
 }) {
-  // Decide props based on fill vs width/height
   const isProduction = process.env.NODE_ENV === "production";
-
-  const imageProps = fill
-    ? { fill: true, style: { objectFit: "cover" } } // you can customize objectFit
-    : { width, height };
-
+  const imageProps = fill ? { fill: true } : { width, height };
   const imageUrl = new URL(src, process.env.NEXT_PUBLIC_CMS_URL).toString();
 
   return (
@@ -23,7 +18,7 @@ export default function ImageRenderer({
       className={className}
       alt={alt}
       {...imageProps}
-      unoptimized={isProduction ? false : true}
+      unoptimized={!isProduction}
     />
   );
 }

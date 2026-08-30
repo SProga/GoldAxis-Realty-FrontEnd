@@ -8,13 +8,10 @@ import AboutPreviewSection from "../Sections/AboutPreview/AboutPreview";
 import ContactPreviewSection from "../Sections/ContactPreview/ContactPreview";
 import LoadingScreen from "../UI/LoadingScreen/LoadingScreen";
 
-export default function HomeClient({
-  navigation,
-  homeData,
-  parishData,
-  allProperties,
-}) {
+export default function HomeClient({ navigation, homeData, allProperties }) {
   const initialized = useAppStore((state) => state.initialized);
+
+  console.log("homeData", homeData);
 
   if (!initialized) {
     return <LoadingScreen />;
@@ -23,10 +20,10 @@ export default function HomeClient({
   return (
     <>
       <Header navigation={navigation} data={homeData} />
-      <ServicesSection service_preview={homeData.section_preview} />
+      <ServicesSection service_preview={homeData.service_preview} />
       <PropertiesPreviewSection allProperties={allProperties} />
-      <AboutPreviewSection />
-      <ContactPreviewSection />
+      <AboutPreviewSection data={homeData?.legacy_preview} />
+      <ContactPreviewSection data={homeData?.contact_preview} />
     </>
   );
 }

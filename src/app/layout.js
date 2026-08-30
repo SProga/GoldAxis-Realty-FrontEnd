@@ -1,4 +1,5 @@
 import { Cinzel, Josefin_Sans } from "next/font/google";
+import "react-image-gallery/styles/image-gallery.css";
 import "./globals.css";
 import Footer from "../components/Sections/Footer/Footer";
 import Navigation from "@/components/Navigation/Navigation";

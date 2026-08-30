@@ -1,9 +1,19 @@
-import { House, KeyRound, TrendingUp } from "lucide-react";
+import {
+  House,
+  KeyRound,
+  TrendingUp,
+  Star,
+  ShieldCheck,
+  Users,
+} from "lucide-react";
 
 const icons = {
   House,
   KeyRound,
   TrendingUp,
+  Star,
+  ShieldCheck,
+  Users,
 };
 
 export function getIcon(icon_name) {

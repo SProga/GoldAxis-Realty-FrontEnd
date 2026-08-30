@@ -1,3 +1,4 @@
+import { HighlightText } from "@/components/UI/Helpers/helpers";
 import Link from "next/link";
 
 export default function ContactPreviewSection({ data }) {
@@ -5,17 +6,15 @@ export default function ContactPreviewSection({ data }) {
     <section className="border-t border-foreground/5 bg-background px-6 py-20 md:py-28">
       <div className="mx-auto max-w-[900px] text-center">
         <p className="mb-5 font-sans text-[11px] font-semibold uppercase tracking-[0.45em] text-primary">
-          {data?.eyebrow || "Begin Your Journey"}
+          {data?.eyebrow}
         </p>
 
         <h2 className="font-display text-[34px] font-semibold uppercase leading-[1.05] text-foreground md:text-[52px]">
-          Ready to Find Your
-          <span className="mt-1 block text-primary">Dream Property?</span>
+          <HighlightText lineBreak={true} text={data?.title} />
         </h2>
 
         <p className="mx-auto mt-7 max-w-[600px] font-sans text-[14px] font-light leading-6 text-muted md:text-[15px]">
-          {data?.description ||
-            "Let our expert team guide you to the perfect luxury property. Schedule a private consultation today."}
+          {data?.description}
         </p>
 
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">

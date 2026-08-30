@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Mail, Phone } from "lucide-react";
 
-export default function PropertyContactCard({ property }) {
+export default function PropertyContact({ property }) {
   const [form, setForm] = useState({
     name: "",
     email: "",

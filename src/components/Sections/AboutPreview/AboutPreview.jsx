@@ -1,3 +1,4 @@
+import { HighlightText } from "@/components/UI/Helpers/helpers";
 import AboutFeatureList from "../../About/AboutFeatureList";
 import ImageRenderer from "../../UI/ImageRenderer/ImageRenderer";
 
@@ -7,16 +8,15 @@ export default function AboutPreviewSection({ data }) {
       <div className="mx-auto grid max-w-[1200px] items-center gap-14 lg:grid-cols-2 lg:gap-20">
         <div>
           <p className="mb-4 font-sans text-[11px] font-semibold uppercase tracking-[0.45em] text-primary">
-            {data?.eyebrow || "Why Prestige Estates"}
+            {data?.eyebrow}
           </p>
 
           <h2 className="font-display text-[32px] font-semibold uppercase leading-tight text-foreground md:text-[42px]">
-            {data?.title || "A Legacy of Luxury & Trust"}
+            <HighlightText lineBreak={true} text={data?.title} />
           </h2>
 
           <p className="mt-5 max-w-[560px] font-sans text-[14px] font-light leading-7 text-muted">
-            {data?.description ||
-              "For over 15 years, we have been the trusted partner for discerning clients seeking the finest properties. Our commitment to excellence, discretion, and personalized service sets us apart."}
+            {data?.description}
           </p>
 
           <div className="mt-8">
@@ -27,8 +27,8 @@ export default function AboutPreviewSection({ data }) {
         <div className="relative mx-auto w-full max-w-[520px] lg:mx-0 lg:ml-auto">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[6px]">
             <ImageRenderer
-              src={data?.image?.[0]?.url}
-              alt={data?.image?.[0]?.alternativeText || "Luxury property"}
+              src={data?.image?.url}
+              alt={data?.image?.alternativeText || "Luxury property"}
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 520px"
@@ -37,11 +37,11 @@ export default function AboutPreviewSection({ data }) {
 
           <div className="absolute -bottom-5 -left-5 rounded-[6px] bg-primary px-6 py-5 text-background shadow-lg md:px-7 md:py-6">
             <div className="font-display text-[28px] font-semibold leading-none">
-              {data?.years || "15+"}
+              {data?.stat_number}+
             </div>
 
             <div className="mt-2 font-sans text-[11px] font-medium tracking-[0.03em]">
-              {data?.years_label || "Years of Excellence"}
+              {data?.stat_label}
             </div>
           </div>
         </div>

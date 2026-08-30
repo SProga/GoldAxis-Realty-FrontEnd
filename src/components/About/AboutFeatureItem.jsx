@@ -1,5 +1,7 @@
+import { getIcon } from "../UI/Helpers/getIcon";
+
 export default function AboutFeatureItem({ feature }) {
-  const Icon = feature.icon;
+  const Icon = getIcon(feature.icon);
 
   return (
     <div className="flex items-start gap-4">

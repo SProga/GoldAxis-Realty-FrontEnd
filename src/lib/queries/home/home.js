@@ -10,12 +10,23 @@ export async function getHomeData() {
         hero_image: {
           populate: true,
         },
-        section_preview: {
+        service_preview: {
           populate: {
             service_card: {
               populate: "*",
             },
           },
+        },
+        legacy_preview: {
+          populate: {
+            image: true,
+            features: {
+              populate: "*",
+            },
+          },
+        },
+        contact_preview: {
+          populate: "*",
         },
       },
     });

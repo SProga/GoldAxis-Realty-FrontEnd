@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ServicesList from "../../Services/ServicesList";
+import { HighlightText } from "@/components/UI/Helpers/helpers";
 
 export default function ServicesPreviewSection({ service_preview }) {
   return (
@@ -7,15 +8,15 @@ export default function ServicesPreviewSection({ service_preview }) {
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-14 text-center">
           <p className="mb-4 font-sans text-[11px] font-semibold uppercase tracking-[0.45em] text-primary">
-            {service_preview?.title}
+            {service_preview?.eyebrow}
           </p>
 
           <h2 className="font-display text-[28px] font-semibold uppercase leading-tight text-foreground md:text-[38px]">
-            {service_preview?.title_heading}
+            <HighlightText lineBreak={true} text={service_preview?.title} />
           </h2>
 
           <p className="mx-auto mt-4 max-w-[650px] font-sans text-[14px] font-light leading-6 text-muted">
-            {service_preview?.title_subheading}
+            {service_preview?.description}
           </p>
         </div>
 

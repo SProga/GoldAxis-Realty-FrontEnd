@@ -39,7 +39,7 @@ export default function PropertyDetails({ property }) {
               {property?.title}
             </h1>
 
-            <div className="mt-3 flex items-center gap-2 font-sans text-[13px] text-muted">
+            <div className="mt-3 flex items-center gap-2 font-sans ga_text_sm text-muted">
               <MapPin
                 className="h-4 w-4 shrink-0 text-primary"
                 strokeWidth={1.5}
@@ -84,7 +84,7 @@ export default function PropertyDetails({ property }) {
                 About This Property
               </h2>
 
-              <div className="mt-4 max-w-[760px] font-sans text-[13px] font-light leading-7 text-muted">
+              <div className="mt-4 max-w-[760px] font-sans ga_text_sm font-light leading-7 text-muted">
                 {property?.description && (
                   <ChkEditorDefault content={property.description} />
                 )}

@@ -1,4 +1,4 @@
-import ServiceCard from "./ServiceCard";
+import ServiceCard from "./page/ServiceCard";
 
 export default function ServicesList({ services = [] }) {
   return (

@@ -9,6 +9,7 @@ import {
   MapPin,
   MapPinned,
   SlidersHorizontal,
+  Sparkles,
   X,
 } from "lucide-react";
 import FilterSection from "./FilterSection";
@@ -44,6 +45,7 @@ const property_statuses = [
 export default function PropertyFilters({
   parishes = [],
   propertyLocationTypes = [],
+  propertyAmenities = [],
   filters,
   show_filters,
   on_change,
@@ -268,6 +270,25 @@ export default function PropertyFilters({
                         "property_location_types",
                         location_type.slug,
                       )
+                    }
+                  />
+                ))}
+              </div>
+            </FilterSection>
+          )}
+
+          {!!propertyAmenities.length && (
+            <FilterSection title="Amenities" icon={Sparkles}>
+              <div className="flex flex-col gap-3">
+                {propertyAmenities.map((amenity) => (
+                  <FilterCheckbox
+                    key={amenity.documentId || amenity.id || amenity.slug}
+                    label={amenity.name}
+                    checked={(filters.property_ameneties || []).includes(
+                      amenity.slug,
+                    )}
+                    on_change={() =>
+                      toggle_array_filter("property_ameneties", amenity.slug)
                     }
                   />
                 ))}

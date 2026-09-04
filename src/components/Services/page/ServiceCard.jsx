@@ -1,4 +1,4 @@
-import { getIcon } from "../UI/Helpers/getIcon";
+import { getIcon } from "../../UI/Helpers/getIcon";
 
 export default function ServiceCard({ service }) {
   const Icon = getIcon(service.icon);

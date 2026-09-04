@@ -20,7 +20,7 @@
 export async function requestHandler(callback, options = {}) {
   try {
     const res = await callback();
-
+    console.log("res", res);
     if (!res) return null;
 
     if (res?.error) {

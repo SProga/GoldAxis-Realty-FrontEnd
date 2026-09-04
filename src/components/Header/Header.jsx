@@ -16,7 +16,7 @@ export default function Header({ data }) {
 
       <div className="relative z-10 flex h-full items-center justify-center px-6 pt-[86px]">
         <div className="mx-auto max-w-[950px] text-center">
-          <p className="mb-6 font-sans text-[11px] font-medium uppercase tracking-[0.5em] text-primary md:text-[13px]">
+          <p className="mb-6 font-sans text-[11px] font-medium uppercase tracking-[0.5em] text-primary md:ga_text_sm">
             Luxury Real Estate Redefined
           </p>
 

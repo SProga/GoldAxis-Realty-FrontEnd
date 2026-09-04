@@ -56,6 +56,18 @@ export async function getPropertiesSearch(search_params = {}) {
       };
     }
 
+    if (search_params.property_ameneties) {
+      const property_ameneties = Array.isArray(search_params.property_ameneties)
+        ? search_params.property_ameneties
+        : [search_params.property_ameneties];
+
+      filters.property_ameneties = {
+        slug: {
+          $in: property_ameneties,
+        },
+      };
+    }
+
     if (search_params.property_location_types) {
       const property_location_types = Array.isArray(
         search_params.property_location_types,

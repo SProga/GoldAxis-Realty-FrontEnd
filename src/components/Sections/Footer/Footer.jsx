@@ -40,7 +40,7 @@ export default function Footer() {
               </span>
             </Link>
 
-            <p className="mt-5 max-w-[280px] font-sans text-[13px] font-light leading-6 text-muted">
+            <p className="mt-5 max-w-[280px] font-sans ga_text_sm font-light leading-6 text-muted">
               Redefining luxury real estate with unparalleled service, exclusive
               properties, and a commitment to excellence that transcends
               expectations.
@@ -83,7 +83,7 @@ export default function Footer() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="font-sans text-[13px] text-foreground/80 transition-colors duration-200 hover:text-primary"
+                  className="font-sans ga_text_sm text-foreground/80 transition-colors duration-200 hover:text-primary"
                 >
                   {link.name}
                 </Link>
@@ -101,7 +101,7 @@ export default function Footer() {
                 <Link
                   key={service}
                   href="/services"
-                  className="font-sans text-[13px] text-foreground/80 transition-colors duration-200 hover:text-primary"
+                  className="font-sans ga_text_sm text-foreground/80 transition-colors duration-200 hover:text-primary"
                 >
                   {service}
                 </Link>
@@ -121,7 +121,7 @@ export default function Footer() {
                   strokeWidth={1.6}
                 />
 
-                <p className="font-sans text-[13px] font-light leading-6 text-foreground/80">
+                <p className="font-sans ga_text_sm font-light leading-6 text-foreground/80">
                   9876 Sunset Boulevard
                   <br />
                   Beverly Hills, CA 90210
@@ -130,7 +130,7 @@ export default function Footer() {
 
               <a
                 href="tel:+11234567890"
-                className="flex items-center gap-3 font-sans text-[13px] text-foreground/80 transition-colors duration-200 hover:text-primary"
+                className="flex items-center gap-3 font-sans ga_text_sm text-foreground/80 transition-colors duration-200 hover:text-primary"
               >
                 <Phone className="h-4 w-4 text-primary" strokeWidth={1.6} />
                 <span>(123) 456-7890</span>
@@ -138,7 +138,7 @@ export default function Footer() {
 
               <a
                 href="mailto:info@prestigeestates.com"
-                className="flex items-center gap-3 font-sans text-[13px] text-foreground/80 transition-colors duration-200 hover:text-primary"
+                className="flex items-center gap-3 font-sans ga_text_sm text-foreground/80 transition-colors duration-200 hover:text-primary"
               >
                 <Mail className="h-4 w-4 text-primary" strokeWidth={1.6} />
                 <span>info@prestigeestates.com</span>

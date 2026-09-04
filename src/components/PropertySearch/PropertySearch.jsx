@@ -10,6 +10,7 @@ import { Button } from "../UI/Button/Button";
 const default_filters = {
   property_status: [],
   property_location_types: [],
+  property_ameneties: [],
   parish: [],
   bedrooms: "",
   bathrooms: "",
@@ -29,6 +30,7 @@ export default function PropertiesSearch({
   allProperties = [],
   parishes = [],
   propertyLocationTypes = [],
+  propertyAmenities = [],
   initialFilters = {},
 }) {
   const router = useRouter();
@@ -40,6 +42,9 @@ export default function PropertiesSearch({
     property_status: normalize_array_filter(initialFilters.property_status),
     property_location_types: normalize_array_filter(
       initialFilters.property_location_types,
+    ),
+    property_ameneties: normalize_array_filter(
+      initialFilters.property_ameneties,
     ),
     parish: normalize_array_filter(initialFilters.parish),
   });
@@ -82,6 +87,7 @@ export default function PropertiesSearch({
         <PropertyFilters
           parishes={parishes}
           propertyLocationTypes={propertyLocationTypes}
+          propertyAmenities={propertyAmenities}
           filters={filters}
           show_filters={show_filters}
           on_change={update_filter}
@@ -107,7 +113,7 @@ export default function PropertiesSearch({
                     No Properties Found
                   </h2>
 
-                  <p className="mt-2 font-sans text-[13px] text-muted">
+                  <p className="mt-2 font-sans ga_text_sm text-muted">
                     Try changing or clearing some of your search filters.
                   </p>
 

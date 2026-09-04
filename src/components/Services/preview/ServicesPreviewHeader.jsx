@@ -1,7 +1,7 @@
-import ImageRenderer from "../UI/ImageRenderer/ImageRenderer";
-import { ButtonLink } from "../UI/Button/Button";
+import ImageRenderer from "../../UI/ImageRenderer/ImageRenderer";
+import { ButtonLink } from "../../UI/Button/Button";
 
-export default function ServicesHeader({ hero }) {
+export default function ServicesPreviewHeader({ hero }) {
   if (!hero) return null;
 
   const background_image = hero?.backgroundImage;

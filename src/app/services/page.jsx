@@ -1,6 +1,6 @@
-import ServicesFooterCTA from "@/components/Services/page/ServiceFooterCTA";
-import ServicesHeader from "@/components/Services/ServicesHeader";
-import ServicesList from "@/components/Services/ServicesList";
+import ServicesFooterCTA from "@/components/Services/page/ServicesFooterCTA";
+import ServicesHeader from "@/components/Services/page/ServicesHeader";
+import ServicesList from "@/components/Services/page/ServicesList";
 import { getServicesPageData } from "@/lib/queries/services/services";
 
 export default async function ServicesPage() {

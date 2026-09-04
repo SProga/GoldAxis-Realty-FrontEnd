@@ -1,6 +1,6 @@
 import Link from "next/link";
-import ServicesList from "../../Services/ServicesList";
 import { HighlightText } from "@/components/UI/Helpers/helpers";
+import ServicesPreviewList from "../../Services/preview/ServicesPreviewList";
 
 export default function ServicesPreviewSection({ service_preview }) {
   return (
@@ -20,7 +20,7 @@ export default function ServicesPreviewSection({ service_preview }) {
           </p>
         </div>
 
-        <ServicesList services={service_preview?.service_card} />
+        <ServicesPreviewList services={service_preview?.service_card} />
 
         <div className="mt-10 flex justify-center">
           <Link

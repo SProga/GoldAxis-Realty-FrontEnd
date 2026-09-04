@@ -1,6 +1,7 @@
 import ServicesSingle from "./ServicesSingle";
 
 export default function ServicesList({ services = [] }) {
+  console.log("services", services);
   if (!services.length) return null;
 
   return (

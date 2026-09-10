@@ -1,7 +1,7 @@
-import { getIcon } from "../UI/Helpers/getIcon";
+import { icons } from "lucide-react";
 
 export default function AboutFeatureItem({ feature }) {
-  const Icon = getIcon(feature.icon);
+  const Icon = icons[feature.icon];
 
   return (
     <div className="flex items-start gap-4">

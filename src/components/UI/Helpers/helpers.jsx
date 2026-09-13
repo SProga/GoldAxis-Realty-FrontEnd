@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 export const HighlightText = ({
   text = "",
   highlightClassName = "text-primary",
@@ -6,6 +8,8 @@ export const HighlightText = ({
   const parts = text.split(/(\[.*?\])/g);
 
   return parts.map((part, index) => {
+    if (part.toLowerCase() === "[br]") return <br key={index} />;
+
     const is_highlighted = part.startsWith("[") && part.endsWith("]");
     const value = is_highlighted ? part.slice(1, -1) : part;
 
@@ -21,3 +25,12 @@ export const HighlightText = ({
     );
   });
 };
+
+export function RenderText(text = "") {
+  return text.split(/\s*\[br\]\s*/gi).map((part, index) => (
+    <Fragment key={index}>
+      {index > 0 && <br />}
+      {part}
+    </Fragment>
+  ));
+}

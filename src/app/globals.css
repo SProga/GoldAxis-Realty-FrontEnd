@@ -85,5 +85,13 @@
 }
 
 .ga_text_sm {
+  font-size: 14px;
+}
+
+.ga_text {
   font-size: 16px;
+}
+
+button {
+  cursor: pointer;
 }

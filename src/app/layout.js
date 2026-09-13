@@ -1,10 +1,10 @@
 import { Cinzel, Josefin_Sans } from "next/font/google";
 import "react-image-gallery/styles/image-gallery.css";
 import "./globals.css";
-import Footer from "../components/Sections/Footer/Footer";
 import Navigation from "@/components/Navigation/Navigation";
 import { getAppGlobalServer } from "@/lib/init/appGlobalsInit.server";
 import AppGlobalsInit from "@/lib/init/appGlobalsInit.client";
+import Footer from "@/components/Sections/Footer/Footer";
 
 const cinzel = Cinzel({
   variable: "--font-cinzel",
@@ -24,7 +24,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const { navigation, properties, homeData, parishData } =
+  const { navigation, properties, homeData, parishData, siteSettings } =
     await getAppGlobalServer();
 
   return (
@@ -33,11 +33,17 @@ export default async function RootLayout({ children }) {
         className={`${cinzel.variable} ${josefinSans.variable} antialiased`}
       >
         <AppGlobalsInit
-          globals={{ navigation, properties, homeData, parishData }}
+          globals={{
+            navigation,
+            properties,
+            homeData,
+            parishData,
+            siteSettings,
+          }}
         />
         <Navigation navigation={navigation} />
         {children}
-        <Footer />
+        <Footer siteSettings={siteSettings} />
       </body>
     </html>
   );

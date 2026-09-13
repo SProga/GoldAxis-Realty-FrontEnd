@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import {
   Facebook,
@@ -6,9 +7,20 @@ import {
   Mail,
   MapPin,
   Phone,
+  MessageCircle,
 } from "lucide-react";
+import ImageRenderer from "@/components/UI/ImageRenderer/ImageRenderer";
 
-export default function Footer() {
+export default function Footer({ siteSettings }) {
+  const settings = siteSettings ?? {};
+
+  console.log("settings", settings);
+
+  const socialIcons = {
+    instagram: Instagram,
+    facebook: Facebook,
+    linkedin: Linkedin,
+  };
   const quick_links = [
     { name: "Buy Property", href: "/properties?type=buy" },
     { name: "Rent Property", href: "/properties?type=rent" },
@@ -30,16 +42,22 @@ export default function Footer() {
       <div className="mx-auto max-w-[1200px]">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-16">
           <div>
-            <Link href="/" className="flex items-baseline gap-2">
-              <span className="font-display text-[24px] font-semibold uppercase text-primary">
-                Prestige
-              </span>
-
-              <span className="font-display text-[20px] uppercase text-foreground/80">
-                Estates
-              </span>
+            <Link href="/">
+              {settings.logo?.url ? (
+                <ImageRenderer
+                  width={64}
+                  height={64}
+                  src={settings.logo.url}
+                  alt={
+                    settings.logo.alternativeText ||
+                    settings.site_name ||
+                    "Home"
+                  }
+                />
+              ) : (
+                settings.site_name || "Home"
+              )}
             </Link>
-
             <p className="mt-5 max-w-[280px] font-sans ga_text_sm font-light leading-6 text-muted">
               Redefining luxury real estate with unparalleled service, exclusive
               properties, and a commitment to excellence that transcends
@@ -47,34 +65,37 @@ export default function Footer() {
             </p>
 
             <div className="mt-6 flex items-center gap-5 text-muted">
-              <a
-                href="#"
-                aria-label="Instagram"
-                className="transition-colors duration-200 hover:text-primary"
-              >
-                <Instagram size={20} strokeWidth={1.6} />
-              </a>
-
-              <a
-                href="#"
-                aria-label="Facebook"
-                className="transition-colors duration-200 hover:text-primary"
-              >
-                <Facebook size={20} strokeWidth={1.6} />
-              </a>
-
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                className="transition-colors duration-200 hover:text-primary"
-              >
-                <Linkedin size={20} strokeWidth={1.6} />
-              </a>
+              {(settings.social_link ?? [])
+                .filter((social) => social.link)
+                .map((social) => {
+                  const Icon = socialIcons[social.title?.toLowerCase()];
+                  return (
+                    <a
+                      key={social.id}
+                      href={social.link}
+                      aria-label={social.title || "Social media"}
+                      className="transition-colors duration-200 hover:text-primary"
+                    >
+                      {social.icon?.url ? (
+                        <ImageRenderer
+                          src={social.icon.url}
+                          width={20}
+                          height={20}
+                          alt=""
+                        />
+                      ) : Icon ? (
+                        <Icon size={20} strokeWidth={1.6} />
+                      ) : (
+                        social.title || "Social media"
+                      )}
+                    </a>
+                  );
+                })}
             </div>
           </div>
 
           <div>
-            <h3 className="font-display text-[16px] font-medium uppercase text-primary">
+            <h3 className="font-display ga_text font-medium uppercase text-primary">
               Quick Links
             </h3>
 
@@ -92,7 +113,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-display text-[16px] font-medium uppercase text-primary">
+            <h3 className="font-display ga_text font-medium uppercase text-primary">
               Services
             </h3>
 
@@ -110,46 +131,63 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-display text-[16px] font-medium uppercase text-primary">
+            <h3 className="font-display ga_text font-medium uppercase text-primary">
               Contact Us
             </h3>
 
             <div className="mt-6 flex flex-col gap-5">
-              <div className="flex items-start gap-3">
-                <MapPin
-                  className="mt-0.5 h-4 w-4 shrink-0 text-primary"
-                  strokeWidth={1.6}
-                />
+              {settings.address && (
+                <div className="flex items-start gap-3">
+                  <MapPin
+                    className="mt-0.5 h-4 w-4 shrink-0 text-primary"
+                    strokeWidth={1.6}
+                  />
 
-                <p className="font-sans ga_text_sm font-light leading-6 text-foreground/80">
-                  9876 Sunset Boulevard
-                  <br />
-                  Beverly Hills, CA 90210
-                </p>
-              </div>
+                  <p className="font-sans ga_text_sm font-light leading-6 text-foreground/80">
+                    {settings.address}
+                  </p>
+                </div>
+              )}
 
-              <a
-                href="tel:+11234567890"
-                className="flex items-center gap-3 font-sans ga_text_sm text-foreground/80 transition-colors duration-200 hover:text-primary"
-              >
-                <Phone className="h-4 w-4 text-primary" strokeWidth={1.6} />
-                <span>(123) 456-7890</span>
-              </a>
+              {settings.phone && (
+                <a
+                  href={`tel:${settings.phone.replace(/[^+\d]/g, "")}`}
+                  className="flex items-center gap-3 font-sans ga_text_sm text-foreground/80 transition-colors duration-200 hover:text-primary"
+                >
+                  <Phone className="h-4 w-4 text-primary" strokeWidth={1.6} />
+                  <span>{settings.phone}</span>
+                </a>
+              )}
 
-              <a
-                href="mailto:info@prestigeestates.com"
-                className="flex items-center gap-3 font-sans ga_text_sm text-foreground/80 transition-colors duration-200 hover:text-primary"
-              >
-                <Mail className="h-4 w-4 text-primary" strokeWidth={1.6} />
-                <span>info@prestigeestates.com</span>
-              </a>
+              {settings.email && (
+                <a
+                  href={`mailto:${settings.email}`}
+                  className="flex items-center gap-3 font-sans ga_text_sm text-foreground/80 transition-colors duration-200 hover:text-primary"
+                >
+                  <Mail className="h-4 w-4 text-primary" strokeWidth={1.6} />
+                  <span>{settings.email}</span>
+                </a>
+              )}
+              {settings.whatsapp && (
+                <a
+                  href={`https://wa.me/${settings.whatsapp.replace(/\D/g, "")}`}
+                  className="flex items-center gap-3 font-sans ga_text_sm text-foreground/80 transition-colors duration-200 hover:text-primary"
+                >
+                  <MessageCircle
+                    className="h-4 w-4 text-primary"
+                    strokeWidth={1.6}
+                  />
+                  <span>WhatsApp {settings.whatsapp}</span>
+                </a>
+              )}
             </div>
           </div>
         </div>
 
         <div className="mt-16 flex flex-col gap-5 border-t border-foreground/10 pt-8 font-sans text-[11px] text-muted md:flex-row md:items-center md:justify-between">
           <p>
-            © {new Date().getFullYear()} Prestige Estates. All rights reserved.
+            © {new Date().getFullYear()} {settings.site_name}. All rights
+            reserved.
           </p>
 
           <div className="flex items-center gap-8">

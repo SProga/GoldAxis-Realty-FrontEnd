@@ -59,7 +59,7 @@ export default function Property({
       </div>
 
       <div className="px-5 py-5">
-        <h3 className="font-display text-[16px] uppercase leading-6 text-primary">
+        <h3 className="font-display ga_text uppercase leading-6 text-primary">
           {title}
         </h3>
 

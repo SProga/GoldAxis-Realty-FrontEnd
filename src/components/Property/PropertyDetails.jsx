@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import PropertyGallery from "./PropertyGallery";
 import PropertyContactCard from "./PropertyContact";
+import PropertyLocation from "./PropertyLocation";
 import ChkEditorDefault from "../UI/ChkeditorDefault/ChkeditorDefault";
 
 export default function PropertyDetails({ property }) {
@@ -85,9 +86,7 @@ export default function PropertyDetails({ property }) {
               </h2>
 
               <div className="mt-4 max-w-[760px] font-sans ga_text_sm font-light leading-7 text-muted">
-                {property?.description && (
-                  <ChkEditorDefault content={property.description} />
-                )}
+                {property?.description}
               </div>
             </section>
 
@@ -114,8 +113,9 @@ export default function PropertyDetails({ property }) {
                 </div>
               </section>
             )}
-          </div>
 
+            <PropertyLocation property={property} />
+          </div>
           <PropertyContactCard property={property} />
         </div>
       </div>

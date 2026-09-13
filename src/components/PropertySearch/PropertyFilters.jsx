@@ -115,7 +115,7 @@ export default function PropertyFilters({
                 strokeWidth={1.5}
               />
 
-              <h2 className="font-display text-[16px] uppercase tracking-[0.06em] text-foreground">
+              <h2 className="font-display ga_text uppercase tracking-[0.06em] text-foreground">
                 Advanced Search
               </h2>
             </div>

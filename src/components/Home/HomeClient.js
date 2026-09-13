@@ -8,13 +8,13 @@ import AboutPreviewSection from "../Sections/AboutPreview/AboutPreview";
 import ContactPreviewSection from "../Sections/ContactPreview/ContactPreview";
 import LoadingScreen from "../UI/LoadingScreen/LoadingScreen";
 
-export default function HomeClient({ navigation, homeData, allProperties }) {
+export default function HomeClient({ navigation, homeData, allProperties, siteSettings }) {
   const initialized = useAppStore((state) => state.initialized);
 
   console.log("homeData", homeData);
 
   if (!initialized) {
-    return <LoadingScreen />;
+    return <LoadingScreen siteSettings={siteSettings} />;
   }
 
   return (

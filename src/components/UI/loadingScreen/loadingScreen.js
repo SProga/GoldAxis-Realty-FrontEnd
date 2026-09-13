@@ -40,25 +40,8 @@ export default function LoadingScreen({ siteSettings }) {
         </motion.div>
         <div
           aria-hidden="true"
-          className="mt-8 h-px w-36 overflow-hidden bg-primary/20"
-        >
-          <motion.div
-            className="h-full w-full origin-left bg-primary"
-            initial={false}
-            animate={
-              reduceMotion
-                ? { scaleX: 1 }
-                : { scaleX: [0.15, 1, 0.15], opacity: [0.4, 1, 0.4] }
-            }
-            transition={{ repeat: Infinity, duration: 2.4, ease: "easeInOut" }}
-          />
-        </div>
-        <p
-          aria-hidden="true"
-          className="mt-5 font-sans text-[10px] uppercase tracking-[0.3em] text-muted"
-        >
-          Please wait
-        </p>
+          className="mt-5 h-6 w-6 animate-spin rounded-full border-2 border-primary/20 border-t-primary motion-reduce:animate-none"
+        />
       </div>
     </div>
   );

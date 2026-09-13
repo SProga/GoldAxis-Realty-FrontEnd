@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Phone } from "lucide-react";
 import ImageRenderer from "../UI/ImageRenderer/ImageRenderer";
 
-export default function Navigation({ navigation }) {
+export default function Navigation({ navigation, siteSettings }) {
   const pathname = usePathname();
 
   return (
@@ -13,7 +13,7 @@ export default function Navigation({ navigation }) {
       <div className="mx-auto flex h-[86px] max-w-[1450px] items-center justify-between px-6 lg:px-10">
         <Link href="/" className="relative block h-[64px] w-[64px] shrink-0">
           <ImageRenderer
-            src="http://localhost:1337/uploads/Gold_Axis_Logo_70f7db300c.png"
+            src={siteSettings.logo.url}
             alt="Gold Axis"
             fill
             className="object-contain object-center"
@@ -47,7 +47,7 @@ export default function Navigation({ navigation }) {
             className="flex items-center gap-2 font-sans text-[11px] font-semibold tracking-[0.04em] text-primary transition-opacity hover:opacity-80"
           >
             <Phone size={14} strokeWidth={1.8} />
-            <span>(123) 456-7890</span>
+            <span>{siteSettings.phone}</span>
           </a>
 
           <Link

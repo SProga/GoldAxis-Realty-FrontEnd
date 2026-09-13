@@ -41,7 +41,7 @@ export default async function RootLayout({ children }) {
             siteSettings,
           }}
         />
-        <Navigation navigation={navigation} />
+        <Navigation navigation={navigation} siteSettings={siteSettings} />
         {children}
         <Footer siteSettings={siteSettings} />
       </body>

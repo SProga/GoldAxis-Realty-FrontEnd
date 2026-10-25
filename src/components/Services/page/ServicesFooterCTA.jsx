@@ -18,9 +18,9 @@ export default function ServicesFooterCTA({ cta }) {
           </p>
         )}
 
-        {cta?.button?.label && cta?.button?.link && (
-          <ButtonLink href={cta.button.link} className="mt-6 inline-flex">
-            {cta.button.label}
+        {cta?.button && (
+          <ButtonLink href={"/contact"} className="mt-6 inline-flex">
+            {cta.button}
           </ButtonLink>
         )}
       </div>

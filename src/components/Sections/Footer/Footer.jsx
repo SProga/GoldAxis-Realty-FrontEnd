@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import { Suspense } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 import {
   Facebook,
   Instagram,
@@ -10,6 +12,29 @@ import {
   MessageCircle,
 } from "lucide-react";
 import ImageRenderer from "@/components/UI/ImageRenderer/ImageRenderer";
+
+function ActiveFooterLink({ href, className, children }) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [linkPath, query] = href.split("?");
+  const isActive = pathname === linkPath &&
+    [...new URLSearchParams(query)].every(([key, value]) => searchParams.get(key) === value);
+
+  return (
+    <Link href={href} aria-current={isActive ? "page" : undefined}
+      className={`${className} transition-colors duration-200 ${isActive ? "text-primary" : "text-foreground/80 hover:text-primary"}`}>
+      {children}
+    </Link>
+  );
+}
+
+function FooterLink({ href, className = "", children }) {
+  return (
+    <Suspense fallback={<Link href={href} className={`${className} text-foreground/80 transition-colors duration-200 hover:text-primary`}>{children}</Link>}>
+      <ActiveFooterLink href={href} className={className}>{children}</ActiveFooterLink>
+    </Suspense>
+  );
+}
 
 export default function Footer({ siteSettings }) {
   const settings = siteSettings ?? {};
@@ -97,13 +122,13 @@ export default function Footer({ siteSettings }) {
 
             <div className="mt-6 flex flex-col gap-4">
               {quick_links.map((link) => (
-                <Link
+                <FooterLink
                   key={link.name}
                   href={link.href}
-                  className="font-sans ga_text_sm text-foreground/80 transition-colors duration-200 hover:text-primary"
+                  className="font-sans ga_text_sm"
                 >
                   {link.name}
-                </Link>
+                </FooterLink>
               ))}
             </div>
           </div>
@@ -115,13 +140,13 @@ export default function Footer({ siteSettings }) {
 
             <div className="mt-6 flex flex-col gap-4">
               {tools.map((tool) => (
-                <Link
+                <FooterLink
                   key={tool.name}
                   href={tool.href}
-                  className="font-sans ga_text_sm text-foreground/80 transition-colors duration-200 hover:text-primary"
+                  className="font-sans ga_text_sm"
                 >
                   {tool.name}
-                </Link>
+                </FooterLink>
               ))}
             </div>
           </div>
@@ -187,19 +212,17 @@ export default function Footer({ siteSettings }) {
           </p>
 
           <div className="flex items-center gap-8">
-            <Link
+            <FooterLink
               href="/privacy"
-              className="transition-colors duration-200 hover:text-primary"
             >
               Privacy Policy
-            </Link>
+            </FooterLink>
 
-            <Link
+            <FooterLink
               href="/terms"
-              className="transition-colors duration-200 hover:text-primary"
             >
               Terms of Service
-            </Link>
+            </FooterLink>
           </div>
         </div>
       </div>

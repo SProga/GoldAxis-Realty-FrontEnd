@@ -8,7 +8,7 @@ export default function FAQIntro() {
 
         <div className="mt-6 h-px w-full max-w-[180px] bg-primary/80" />
 
-        <h1 className="mt-6 font-display text-[60px] leading-[0.9] tracking-[-0.06em] text-primary sm:text-[68px] lg:text-[82px]">
+        <h1 className="mt-6 font-display text-[60px] leading-[0.9] tracking-[-0.06em] text-secondary sm:text-[68px] lg:text-[82px]">
           Frequently
           <br />
           Asked

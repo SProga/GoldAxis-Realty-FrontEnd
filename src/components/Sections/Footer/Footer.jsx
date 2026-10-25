@@ -14,28 +14,24 @@ import ImageRenderer from "@/components/UI/ImageRenderer/ImageRenderer";
 export default function Footer({ siteSettings }) {
   const settings = siteSettings ?? {};
 
-  console.log("settings", settings);
-
   const socialIcons = {
     instagram: Instagram,
     facebook: Facebook,
     linkedin: Linkedin,
   };
   const quick_links = [
-    { name: "Buy Property", href: "/properties?type=buy" },
-    { name: "Rent Property", href: "/properties?type=rent" },
-    { name: "Our Services", href: "/services" },
+    { name: "Buy Property", href: "/properties?property_status=sale" },
+    {
+      name: "Rent Property",
+      href: "/properties?property_status=rent",
+    },
+    { name: "Services", href: "/services" },
     { name: "About Us", href: "/about" },
     { name: "Contact", href: "/contact" },
+    { name: "FAQs", href: "/faq" },
   ];
 
-  const services = [
-    "Luxury Sales",
-    "Premium Rentals",
-    "Property Management",
-    "Investment Advisory",
-    "Market Analysis",
-  ];
+  const tools = [{ name: "Mortgage Calculator", href: "/mortgage-calculator" }];
 
   return (
     <footer className="border-t border-foreground/5 bg-background px-6 py-16 md:py-20">
@@ -114,17 +110,17 @@ export default function Footer({ siteSettings }) {
 
           <div>
             <h3 className="font-display ga_text font-medium uppercase text-primary">
-              Services
+              Tools
             </h3>
 
             <div className="mt-6 flex flex-col gap-4">
-              {services.map((service) => (
+              {tools.map((tool) => (
                 <Link
-                  key={service}
-                  href="/services"
+                  key={tool.name}
+                  href={tool.href}
                   className="font-sans ga_text_sm text-foreground/80 transition-colors duration-200 hover:text-primary"
                 >
-                  {service}
+                  {tool.name}
                 </Link>
               ))}
             </div>
@@ -143,7 +139,7 @@ export default function Footer({ siteSettings }) {
                     strokeWidth={1.6}
                   />
 
-                  <p className="font-sans ga_text_sm font-light leading-6 text-foreground/80">
+                  <p className="font-sans ga_text_sm leading-6 text-foreground/80">
                     {settings.address}
                   </p>
                 </div>

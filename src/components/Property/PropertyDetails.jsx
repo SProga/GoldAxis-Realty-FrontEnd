@@ -86,7 +86,11 @@ export default function PropertyDetails({ property }) {
               </h2>
 
               <div className="mt-4 max-w-[760px] font-sans ga_text_sm font-light leading-7 text-muted">
-                {property?.description}
+                {property?.description || (
+                  <p className="text-muted">
+                    No description available. Please check back later.
+                  </p>
+                )}
               </div>
             </section>
 

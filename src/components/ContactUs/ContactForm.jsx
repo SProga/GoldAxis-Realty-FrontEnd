@@ -66,14 +66,13 @@ export default function ContactForm() {
         </span>
         <select className="w-full rounded-sm border border-foreground/10 bg-[#161818] px-3 py-3 text-sm text-foreground focus:border-primary focus:outline-none">
           <option value="">Select a service</option>
-          <option>Property Sales</option>
-          <option>Property Rentals</option>
+          <option>Buy Property</option>
+          <option>Rent Property</option>
+          <option>Sell A Property</option>
+          <option>Rent A Property</option>
           <option>Property Management</option>
-          <option>Investment Advisory</option>
-          <option>Market Analysis</option>
         </select>
       </label>
-
       <label className="mt-5 block">
         <span className="mb-2 block text-[11px] uppercase tracking-[0.16em] text-foreground/70">
           Message
@@ -85,7 +84,11 @@ export default function ContactForm() {
         />
       </label>
 
-      <Button type="submit" className="mt-7 w-full justify-center">
+      <Button
+        type="submit"
+        className="mt-7 w-full justify-center"
+        type="primary"
+      >
         Send Message
       </Button>
     </form>

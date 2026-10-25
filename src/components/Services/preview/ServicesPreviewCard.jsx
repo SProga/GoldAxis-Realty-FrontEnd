@@ -1,6 +1,7 @@
 import { getIcon } from "../../UI/Helpers/getIcon";
 
 export default function ServicesPreviewCard({ service }) {
+  console.log("service", service);
   const Icon = getIcon(service.icon);
 
   return (

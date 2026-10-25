@@ -7,7 +7,7 @@ const defaultDetails = {
   hours: "Monday - Friday, 9:00 AM - 5:00 PM\nSaturday By Appointment",
 };
 
-export default function ContactInfo({ settings = {} }) {
+export default function ContactInfo({ settings = {}, contactData = {} }) {
   const details = {
     address: settings.address || defaultDetails.address,
     phone: settings.phone || defaultDetails.phone,
@@ -46,12 +46,10 @@ export default function ContactInfo({ settings = {} }) {
     <div className="space-y-8 md:pr-6">
       <div>
         <p className="font-display text-[22px] uppercase tracking-[0.1em] text-primary">
-          Let&apos;s Start a Conversation
+          {contactData?.contact_form_title}
         </p>
         <p className="mt-4 max-w-[420px] text-sm leading-7 text-foreground/70">
-          Whether you&apos;re looking to buy, sell, or invest in property, our
-          team is here to help. We&apos;ll respond with expert guidance and
-          tailored support.
+          {contactData?.contact_form_description}
         </p>
       </div>
 

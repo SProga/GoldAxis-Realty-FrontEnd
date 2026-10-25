@@ -5,6 +5,14 @@ import { usePathname } from "next/navigation";
 import { Phone } from "lucide-react";
 import ImageRenderer from "../UI/ImageRenderer/ImageRenderer";
 
+export function navigationHref(link) {
+  const slug = link?.trim().replace(/^\/+|\/+$/g, "");
+  if (!slug || slug.toLowerCase() === "home") {
+    return "/";
+  }
+  return `/${slug}`;
+}
+
 export default function Navigation({ navigation, siteSettings }) {
   const pathname = usePathname();
 
@@ -22,8 +30,11 @@ export default function Navigation({ navigation, siteSettings }) {
 
         <div className="hidden items-center gap-8 lg:flex">
           {navigation?.navigation_link?.map((nav) => {
-            const href = nav.link === "home" ? "/" : nav.link;
-            const isActive = pathname === href;
+            const href = navigationHref(nav.link);
+            const isActive =
+              href === "/"
+                ? pathname === "/"
+                : pathname === href || pathname.startsWith(`${href}/`);
 
             return (
               <Link
